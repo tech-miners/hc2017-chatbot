@@ -26,7 +26,7 @@ server.post('/api/messages', connector.listen());
 bot.dialog('/', [
     function (session, args, next) {
         if (!session.userData.name) {
-            session.beginDialog('/profile');
+            session.beginDialog('/profileSetup');
         } else {
             next();
         }
@@ -36,7 +36,7 @@ bot.dialog('/', [
     }
 ]);
 
-bot.dialog('/profile', [
+bot.dialog('/profileSetup', [
     function (session) {
         builder.Prompts.text(session, 'Hi! What is your name?');
     },
